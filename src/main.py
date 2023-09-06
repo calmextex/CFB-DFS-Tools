@@ -1,8 +1,8 @@
 import sys
-from nfl_gpp_simulator import *
+from cfb_gpp_simulator import *
 from windows_inhibitor import *
-from nfl_showdown_optimizer import *
-from nfl_optimizer import *
+from cfb_showdown_optimizer import *
+from cfb_optimizer import *
 
 def main(arguments):
     if len(arguments) < 3 or len(arguments) > 7:
@@ -15,14 +15,14 @@ def main(arguments):
     if process == 'opto':
         num_lineups = arguments[3]
         num_uniques = arguments[4]
-        opto = NFL_Optimizer(site, num_lineups, num_uniques)
+        opto = CFB_Optimizer(site, num_lineups, num_uniques)
         opto.optimize()
         opto.output()
 
     elif process == 'sd':
         num_lineups = arguments[3]
         num_uniques = arguments[4]
-        opto = NFL_Showdown_Optimizer(site, num_lineups, num_uniques)
+        opto = CFB_Showdown_Optimizer(site, num_lineups, num_uniques)
         opto.optimize()
         opto.output()
 
@@ -45,7 +45,7 @@ def main(arguments):
             num_iterations = arguments[4]
         #if 'match' in arguments:
         #    match_lineup_input_to_field_size = True
-        sim = NFL_GPP_Simulator(site, field_size, num_iterations, use_contest_data,
+        sim = CFB_GPP_Simulator(site, field_size, num_iterations, use_contest_data,
                                 use_file_upload)
         sim.generate_field_lineups()
         sim.run_tournament_simulation()
